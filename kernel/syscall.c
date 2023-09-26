@@ -102,8 +102,8 @@ extern uint64 sys_link(void);
 extern uint64 sys_mkdir(void);
 extern uint64 sys_close(void);
 
-// An array mapping syscall numbers from syscall.h
-// to the function that handles the system call.
+// An array mapping syscall numbers from syscall.h to the function that handles the system call.
+// 用于将寄存器a7保存的系统调用数字代号映射到一个具体的函数
 static uint64 (*syscalls[])(void) = {
 [SYS_fork]    sys_fork,
 [SYS_exit]    sys_exit,
@@ -133,8 +133,8 @@ syscall(void)
 {
   int num;
   struct proc *p = myproc();
-
-  num = p->trapframe->a7;
+  // 内核会使用这个数字num来确定syscall()函数调用的是哪个系统调用
+  num = p->trapframe->a7;   // a7是一个寄存器
   if(num > 0 && num < NELEM(syscalls) && syscalls[num]) {
     // Use num to lookup the system call function for num, call it,
     // and store its return value in p->trapframe->a0

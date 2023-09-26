@@ -8,7 +8,11 @@ struct spinlock;
 struct sleeplock;
 struct stat;
 struct superblock;
-
+/*
+    ! xv6的内核的各个代码提供的函数接口
+    实现这些函数接口的具体代码见注释所写的文件名如：bio.c
+    xv6操作系统使用的是宏内核架构monolithic kernel，所以xv6内核的接口就是整个操作系统的结构。
+*/
 // bio.c
 void            binit(void);
 struct buf*     bread(uint, uint);

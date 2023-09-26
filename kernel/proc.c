@@ -229,8 +229,8 @@ uchar initcode[] = {
 };
 
 // Set up first user process.
-void
-userinit(void)
+// 在kernel/main.c的main函数初始化了一些设备和子系统后，它会通过调用这里的userinit()函数来创建第一个进程。
+void userinit(void)
 {
   struct proc *p;
 

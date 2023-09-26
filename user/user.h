@@ -1,6 +1,6 @@
 struct stat;
 
-// system calls
+// 用户程序可以使用的system calls
 int fork(void);
 int exit(int) __attribute__((noreturn));
 int wait(int*);
